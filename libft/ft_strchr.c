@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_builtin.h                                :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:23:12 by rhong             #+#    #+#             */
-/*   Updated: 2022/11/15 16:37:34 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/22 20:15:51 by rhong             #+#    #+#             */
+/*   Updated: 2022/04/28 13:41:09 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_BUILTIN_H
-# define MINISHELL_BUILTIN_H
+char	*ft_strchr(const char *s, int c)
+{
+	int	ret;
 
-void	echo(char **argv);
-void	cd(char **argv);
-void	pwd(char **env);
-
-#endif
+	ret = 0;
+	while (s[ret])
+	{
+		if (s[ret] == c)
+			return ((char *)&s[ret]);
+		ret++;
+	}
+	if (c == 0)
+		return ((char *)&s[ret]);
+	return (0);
+}

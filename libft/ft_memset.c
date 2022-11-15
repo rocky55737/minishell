@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_builtin.h                                :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:23:12 by rhong             #+#    #+#             */
-/*   Updated: 2022/11/15 16:37:34 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/24 17:21:54 by rhong             #+#    #+#             */
+/*   Updated: 2022/04/05 21:31:54 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_BUILTIN_H
-# define MINISHELL_BUILTIN_H
+#include "libft.h"
 
-void	echo(char **argv);
-void	cd(char **argv);
-void	pwd(char **env);
-
-#endif
+void	*ft_memset(void *b, int c, size_t len)
+{
+	while (len != 0)
+	{
+		*(unsigned char *)(b + len - 1) = (unsigned char)c;
+		len--;
+	}
+	return (b);
+}

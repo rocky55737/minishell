@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_builtin.h                                :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:23:12 by rhong             #+#    #+#             */
-/*   Updated: 2022/11/15 16:37:34 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/24 20:32:02 by rhong             #+#    #+#             */
+/*   Updated: 2022/04/28 14:21:55 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_BUILTIN_H
-# define MINISHELL_BUILTIN_H
+#include "libft.h"
 
-void	echo(char **argv);
-void	cd(char **argv);
-void	pwd(char **env);
-
-#endif
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	if (dst == src)
+		return (dst);
+	while (n != 0)
+	{
+		*(unsigned char *)(dst + n - 1) = *(unsigned char *)(src + n - 1);
+		n--;
+	}
+	return (dst);
+}

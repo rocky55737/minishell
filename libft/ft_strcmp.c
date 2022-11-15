@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_builtin.h                                :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:23:12 by rhong             #+#    #+#             */
-/*   Updated: 2022/11/15 16:37:34 by rhong            ###   ########.fr       */
+/*   Created: 2022/09/16 18:35:12 by rhong             #+#    #+#             */
+/*   Updated: 2022/09/16 18:43:21 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_BUILTIN_H
-# define MINISHELL_BUILTIN_H
+#include "libft.h"
 
-void	echo(char **argv);
-void	cd(char **argv);
-void	pwd(char **env);
+int	ft_strcmp(char *s1, char *s2)
+{
+	unsigned int	count;
 
-#endif
+	count = 0;
+	while (s1[count] && s2[count] && s1[count] == s2[count])
+		count++;
+	return ((unsigned char)s1[count] - (unsigned char)s2[count]);
+}

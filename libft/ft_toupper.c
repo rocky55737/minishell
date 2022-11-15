@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_builtin.h                                :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:23:12 by rhong             #+#    #+#             */
-/*   Updated: 2022/11/15 16:37:34 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/22 19:53:45 by rhong             #+#    #+#             */
+/*   Updated: 2022/03/22 20:05:58 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_BUILTIN_H
-# define MINISHELL_BUILTIN_H
+static int	ft_islower(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}
 
-void	echo(char **argv);
-void	cd(char **argv);
-void	pwd(char **env);
-
-#endif
+int	ft_toupper(int c)
+{
+	if (ft_islower(c))
+		c -= ('a' - 'A');
+	return (c);
+}

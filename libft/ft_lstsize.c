@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_builtin.h                                :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:23:12 by rhong             #+#    #+#             */
-/*   Updated: 2022/11/15 16:37:34 by rhong            ###   ########.fr       */
+/*   Created: 2022/04/09 18:21:15 by rhong             #+#    #+#             */
+/*   Updated: 2022/04/09 18:31:32 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_BUILTIN_H
-# define MINISHELL_BUILTIN_H
+#include "libft.h"
 
-void	echo(char **argv);
-void	cd(char **argv);
-void	pwd(char **env);
+int	ft_lstsize(t_list *lst)
+{
+	int	cnt;
 
-#endif
+	cnt = 0;
+	if (!lst)
+		return (0);
+	while (lst->next)
+	{
+		cnt++;
+		lst = lst->next;
+	}
+	return (cnt + 1);
+}

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_builtin.h                                :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 15:23:12 by rhong             #+#    #+#             */
-/*   Updated: 2022/11/15 16:37:34 by rhong            ###   ########.fr       */
+/*   Created: 2022/11/15 16:26:34 by rhong             #+#    #+#             */
+/*   Updated: 2022/11/15 16:47:13 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_BUILTIN_H
-# define MINISHELL_BUILTIN_H
+#include "minishell_builtin.h"
+#include "../libft/libft.h"
+#include <stdio.h>
 
-void	echo(char **argv);
-void	cd(char **argv);
-void	pwd(char **env);
+void	pwd(char **env)
+{
+	int	cnt;
 
-#endif
+	cnt = 0;
+	while (ft_strncmp("PWD=", env[cnt], 4) != 0)
+		cnt++;
+	printf("%s\n", &(env[cnt][4]));
+}

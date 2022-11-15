@@ -6,7 +6,7 @@
 /*   By: rhong <rhong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:24:59 by rhong             #+#    #+#             */
-/*   Updated: 2022/11/15 15:48:40 by rhong            ###   ########.fr       */
+/*   Updated: 2022/11/15 16:23:40 by rhong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	echo(char **argv)
 	}
 	while (argv[argv_cnt])
 	{
-		printf("%s\n", argv[argv_cnt]);
+		printf("%s", argv[argv_cnt]);
 		argv_cnt++;
 	}
 	if (!n_op)
@@ -41,7 +41,7 @@ static int	is_option(char *str)
 {
 	int	cnt;
 
-	if (str[0] == '-')
+	if (str[0] != '-')
 		return (0);
 	cnt = 1;
 	while (str[cnt])
