@@ -15,7 +15,7 @@
 
 typedef struct s_node_pipe
 {
-	t_node_exec	*n_cmd;
+	t_node_exec	*n_exec;
 	t_node_pipe	*n_pipe;
 }	t_node_pipe;
 
