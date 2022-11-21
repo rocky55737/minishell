@@ -5,5 +5,7 @@
 		"stdio.h": "c",
 		"stat.h": "c",
 		"err.h": "c"
-	}
+	},
+	"editor.insertSpaces": false,
+	"editor.useTabStops": true
 }
