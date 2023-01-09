@@ -3,32 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: taehooki <taehooki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 19:43:58 by rhong             #+#    #+#             */
-/*   Updated: 2022/04/07 18:20:13 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/25 00:33:18 by taehooki          #+#    #+#             */
+/*   Updated: 2022/05/09 15:41:30 by taehooki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup(const char *s1)
 {
-	int		src_len;
-	char	*duped_str;
+	size_t	count;
+	char	*result;
 
-	src_len = 0;
-	while (src[src_len])
-		src_len++;
-	duped_str = (char *)malloc(sizeof(char) * (src_len + 1));
-	if (duped_str == 0)
-		return (0);
-	src_len = 0;
-	while (src[src_len])
-	{
-		duped_str[src_len] = src[src_len];
-		src_len++;
-	}
-	duped_str[src_len] = 0;
-	return (duped_str);
+	count = ft_strlen(s1);
+	result = (char *)malloc(sizeof(char) * (count + 1));
+	if (!result)
+		return (NULL);
+	ft_strlcpy(result, s1, count + 1);
+	return (result);
 }

@@ -3,69 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: taehooki <taehooki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/03 16:39:57 by rhong             #+#    #+#             */
-/*   Updated: 2022/04/09 17:16:26 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/25 01:19:18 by taehooki          #+#    #+#             */
+/*   Updated: 2022/07/10 11:32:03 by taehooki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	itoa_len(long long n)
+static int	ft_signcheck(int n)
 {
-	size_t	len;
-
-	len = 0;
-	if (n == 0)
+	if (n < 0)
 		return (1);
-	while (n != 0)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
+	return (0);
 }
 
-static char	*do_itoa(char *s, size_t c, size_t l, long long n)
+static int	ft_digitcheck(int n)
 {
-	size_t	len;
+	int	count;
 
-	len = l + 1;
-	if (c == 0)
-		len--;
-	s[len] = 0;
-	if (n == 0)
-		s[0] = '0';
-	while (c < len && n > 0)
+	count = 0;
+	if (!n)
+		return (1);
+	while (n)
 	{
-		s[len - 1] = n % 10 + '0';
-		n /= 10;
-		len--;
+		n = n / 10;
+		++count;
 	}
-	return (s);
+	return (count);
+}
+
+static void	ft_fillnum(unsigned int n, int digit, int sign, char	*result)
+{
+	*(result + (digit--) + sign) = '\0';
+	while (digit >= 0)
+	{
+		*(result + digit + sign) = '0' + n % 10;
+		n /= 10;
+		--digit;
+	}
+	if (sign)
+		*(result) = '-';
 }
 
 char	*ft_itoa(int n)
 {
-	char		*str;
-	long long	num;
-	size_t		cnt;
-	size_t		len;
+	unsigned int	abs;
+	char			*result;
+	int				sign;
+	int				digit;
 
-	num = n;
-	cnt = 0;
-	len = itoa_len(num);
-	if (num < 0)
-	{
-		cnt++;
-		num *= -1;
-	}
-	str = (char *)malloc(sizeof(char) * (len + cnt + 1));
-	if (!str)
-		return (0);
-	if (cnt == 1)
-		str[0] = '-';
-	do_itoa(str, cnt, len, num);
-	return (str);
+	sign = ft_signcheck(n);
+	digit = ft_digitcheck(n);
+	result = (char *)malloc(sizeof(char) * (sign + digit + 1));
+	if (!(result))
+		return (NULL);
+	if (sign)
+		abs = -n;
+	else
+		abs = n;
+	ft_fillnum(abs, digit, sign, result);
+	return (result);
 }

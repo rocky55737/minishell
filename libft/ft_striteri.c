@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: taehooki <taehooki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 15:43:03 by rhong             #+#    #+#             */
-/*   Updated: 2022/04/05 15:46:44 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/25 01:28:21 by taehooki          #+#    #+#             */
+/*   Updated: 2022/05/09 15:41:49 by taehooki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	index;
+	unsigned int	i;
 
-	index = 0;
-	while (s[index])
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		f(index, &s[index]);
-		index++;
+		f(i, &s[i]);
+		i++;
 	}
 }

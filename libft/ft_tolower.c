@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: taehooki <taehooki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 20:06:17 by rhong             #+#    #+#             */
-/*   Updated: 2022/03/22 20:15:30 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/15 15:32:26 by taehooki          #+#    #+#             */
+/*   Updated: 2022/07/10 11:32:42 by taehooki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_isupper(int c)
-{
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
-}
-
 int	ft_tolower(int c)
 {
-	if (ft_isupper(c))
-		c += ('a' - 'A');
+	if ('A' <= c && c <= 'Z')
+		return (c + 32);
 	return (c);
 }

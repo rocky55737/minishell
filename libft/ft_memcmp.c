@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: taehooki <taehooki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 14:24:48 by rhong             #+#    #+#             */
-/*   Updated: 2022/04/07 18:52:19 by rhong            ###   ########.fr       */
+/*   Created: 2022/04/13 19:06:01 by taehooki          #+#    #+#             */
+/*   Updated: 2022/05/09 15:39:22 by taehooki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	count;
-	char	*ss1;
-	char	*ss2;
+	unsigned char	*uv1;
+	unsigned char	*uv2;
+	size_t			i;
 
-	if (n == 0)
-		return (0);
-	ss1 = (char *)s1;
-	ss2 = (char *)s2;
-	count = 0;
-	while (count < n && ss1[count] == ss2[count])
-		count++;
-	if (count == n)
-		return ((unsigned char)ss1[count - 1] - (unsigned char)ss2[count - 1]);
-	return ((unsigned char)ss1[count] - (unsigned char)ss2[count]);
+	i = 0;
+	uv1 = (unsigned char *)s1;
+	uv2 = (unsigned char *)s2;
+	while (i < n)
+	{
+		if (uv1[i] != uv2[i])
+			return (uv1[i] - uv2[i]);
+		++i;
+	}
+	return (0);
 }

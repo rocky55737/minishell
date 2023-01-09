@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: taehooki <taehooki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 19:08:16 by rhong             #+#    #+#             */
-/*   Updated: 2022/04/07 18:05:15 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/25 17:06:16 by taehooki          #+#    #+#             */
+/*   Updated: 2022/07/10 11:32:01 by taehooki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	if (c >= '0' && c <= '9')
-	{
-		return (1);
-	}
-	return (0);
+	return ('0' <= c && c <= '9');
 }

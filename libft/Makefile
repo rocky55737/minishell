@@ -1,55 +1,82 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: rhong <rhong@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/28 14:45:33 by rhong             #+#    #+#              #
-#    Updated: 2022/09/26 19:36:28 by rhong            ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME	= libft.a
 
-CC = cc
-NAME = libft.a
-CFLAGS = -Wall -Wextra -Werror
+CC		= cc
+CFLAGS 	= -Wall -Wextra -Werror
 
-SRCS = ./ft_isalpha.c ./ft_isdigit.c ./ft_isalnum.c ./ft_isascii.c ./ft_isprint.c ./ft_strlen.c ./ft_memset.c ./ft_bzero.c ./ft_memcpy.c ./ft_memmove.c ./ft_strlcpy.c ./ft_strlcat.c ./ft_toupper.c ./ft_tolower.c ./ft_strchr.c ./ft_strrchr.c ./ft_strncmp.c ./ft_memchr.c ./ft_memcmp.c ./ft_strnstr.c ./ft_atoi.c ./ft_calloc.c ./ft_strdup.c ./ft_substr.c ./ft_strcmp.c ./ft_strtrim.c ./ft_split.c ./ft_itoa.c ./ft_strmapi.c ./ft_striteri.c ./ft_putchar_fd.c ./ft_putstr_fd.c ./ft_putendl_fd.c ./ft_putnbr_fd.c
+SRCS		= ft_atoi.c \
+			ft_bzero.c \
+			ft_calloc.c \
+			ft_isalnum.c \
+			ft_isalpha.c \
+			ft_isascii.c \
+			ft_isdigit.c \
+			ft_isprint.c \
+			ft_itoa.c \
+			ft_memchr.c \
+			ft_memcmp.c \
+			ft_memcpy.c \
+			ft_memmove.c \
+			ft_memset.c \
+			ft_putchar_fd.c \
+			ft_putendl_fd.c \
+			ft_putnbr_fd.c \
+			ft_putstr_fd.c \
+			ft_split.c \
+			ft_strchr.c \
+			ft_strdup.c \
+			ft_striteri.c \
+			ft_strjoin.c \
+			ft_strlcat.c \
+			ft_strlcpy.c \
+			ft_strlen.c \
+			ft_strmapi.c \
+			ft_strncmp.c \
+			ft_strnstr.c \
+			ft_strrchr.c \
+			ft_strtrim.c \
+			ft_substr.c \
+			ft_tolower.c \
+			ft_toupper.c
 
-SRCS_B = ./ft_lstnew.c ./ft_lstadd_front.c ./ft_lstsize.c ./ft_lstlast.c ./ft_lstadd_back.c ./ft_lstdelone.c ./ft_lstclear.c ./ft_lstiter.c ./ft_lstmap.c
+SRCS_BONUS	= ft_lstsize.c \
+			ft_lstadd_back.c \
+			ft_lstadd_front.c \
+			ft_lstclear.c \
+			ft_lstdelone.c \
+			ft_lstiter.c \
+			ft_lstlast.c \
+			ft_lstmap.c \
+			ft_lstnew.c
 
-HEADER = libft.h
-
-AR = ar
-ARFLAGS = -rcs
-OBJS = $(SRCS:.c=.o)
-OBJS_B = $(SRCS_B:.c=.o)
+OBJS		=	$(SRCS:.c=.o)
+OBJS_BONUS	=	$(SRCS_BONUS:.c=.o)
 
 ifdef WITH_BONUS
-	TOTAL_OBJS = $(OBJS) $(OBJS_B)
+	OBJ_FILES = $(OBJS) $(OBJS_BONUS)
 else
-	TOTAL_OBJS = $(OBJS)
+	OBJ_FILES = $(OBJS)
 endif
 
-all : $(NAME) $(HEADER)
-
-$(NAME): $(TOTAL_OBJS)
-	$(AR) $(ARFLAGS) $@ $^
-
 %.o : %.c
-	$(CC) $(CFLAGS) -c $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
-clean :
-	rm -rf $(OBJS) $(OBJS_B)
+$(NAME) : $(OBJ_FILES)
+	@ar cr $@ $^
+	@echo "Libft made"
 
-fclean : clean
-	rm -rf $(NAME)
-
-re :
-	make fclean
-	make all
+all : $(NAME)
 
 bonus :
-	make WITH_BONUS=1
+	@make WITH_BONUS=1 all
 
-.PHONY: all clean fclean re bonus
+clean :
+	@rm -f $(OBJS) $(OBJS_BONUS)
+
+fclean : clean
+	@rm -f $(NAME)
+
+re :
+	@make fclean
+	@make all
+
+.PHONY		:	all clean fclean re bonus

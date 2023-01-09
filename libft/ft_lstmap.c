@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: taehooki <taehooki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/09 21:19:29 by rhong             #+#    #+#             */
-/*   Updated: 2022/04/10 13:41:56 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/25 01:21:50 by taehooki          #+#    #+#             */
+/*   Updated: 2022/05/09 15:38:37 by taehooki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*mapped_lst;
-	t_list	*new_lst;
+	t_list	*result;
+	t_list	*tmp;
 
-	mapped_lst = 0;
+	if (!f)
+		return (NULL);
+	result = NULL;
 	while (lst)
 	{
-		new_lst = ft_lstnew(f(lst->content));
-		if (!new_lst)
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
 		{
-			ft_lstclear(&mapped_lst, del);
-			return (0);
+			ft_lstclear(&result, del);
+			return (NULL);
 		}
-		ft_lstadd_back(&mapped_lst, new_lst);
+		ft_lstadd_back(&result, tmp);
+		tmp = tmp->next;
 		lst = lst->next;
 	}
-	new_lst = 0;
-	return (mapped_lst);
+	return (result);
 }

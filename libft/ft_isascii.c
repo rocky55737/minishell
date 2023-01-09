@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhong <rhong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: taehooki <taehooki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 19:35:05 by rhong             #+#    #+#             */
-/*   Updated: 2022/04/07 18:05:02 by rhong            ###   ########.fr       */
+/*   Created: 2022/03/15 15:27:46 by taehooki          #+#    #+#             */
+/*   Updated: 2022/07/10 11:32:00 by taehooki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	return (0 <= c && c <= 127);
 }
